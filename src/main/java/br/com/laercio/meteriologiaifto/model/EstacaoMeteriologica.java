@@ -1,11 +1,12 @@
 package br.com.laercio.meteriologiaifto.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "estacao_meteriologica")
 public class EstacaoMeteriologica {
 
 	@Id
@@ -13,7 +14,8 @@ public class EstacaoMeteriologica {
 	private Long id;
 	private String nome;
 	private String descricao;
-	private String location;
+	@Column(name = "posicao_mapa")
+	private String posicaoNoMapa;
 
 	public Long getId() {
 		return id;
@@ -39,12 +41,12 @@ public class EstacaoMeteriologica {
 		this.descricao = descricao;
 	}
 
-	public String getLocation() {
-		return location;
+	public String getPosicaoNoMapa() {
+		return posicaoNoMapa;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setPosicaoNoMapa(String posicaoNoMapa) {
+		this.posicaoNoMapa = posicaoNoMapa;
 	}
 
 }
