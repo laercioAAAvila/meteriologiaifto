@@ -23,4 +23,6 @@ public class EstacaoMeteriologicaController {
 	public EstacaoMeteriologica adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
 		return estacaoMeteriologicaRepository.save(estacaoMeteriologica);
 	}
+	
+	
 }
