@@ -20,11 +20,20 @@ public class DadosMeteriologicos {
 	@Column(name = "velocidade_vento")
 	private double velocidadeDoVento;
 	@Column(name = "direcao_vento")
-	private double direcaoDoVento;
+	private String direcaoDoVento;
 	@Column(name = "precipitacao_chuva")
 	private double precipitacaoDaChuva;
 	@Column(name = "radiacao_solar")
 	private double radicaoSolar;
+	private String data;
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
 
 	public Long getId() {
 		return id;
@@ -66,11 +75,11 @@ public class DadosMeteriologicos {
 		this.velocidadeDoVento = velocidadeDoVento;
 	}
 
-	public double getDirecaoDoVento() {
+	public String getDirecaoDoVento() {
 		return direcaoDoVento;
 	}
 
-	public void setDirecaoDoVento(double direcaoDoVento) {
+	public void setDirecaoDoVento(String direcaoDoVento) {
 		this.direcaoDoVento = direcaoDoVento;
 	}
 
