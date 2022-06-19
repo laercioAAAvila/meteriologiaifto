@@ -27,14 +27,6 @@ public class DadosMeteriologicos {
 	private double radicaoSolar;
 	private String data;
 
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -97,6 +89,14 @@ public class DadosMeteriologicos {
 
 	public void setRadicaoSolar(double radicaoSolar) {
 		this.radicaoSolar = radicaoSolar;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
 	}
 
 }
