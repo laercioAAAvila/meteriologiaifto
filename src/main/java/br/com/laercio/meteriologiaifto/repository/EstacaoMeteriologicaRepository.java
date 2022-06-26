@@ -7,5 +7,4 @@ import br.com.laercio.meteriologiaifto.model.EstacaoMeteriologica;
 
 @Repository
 public interface EstacaoMeteriologicaRepository extends JpaRepository<EstacaoMeteriologica, Long> {
-
 }

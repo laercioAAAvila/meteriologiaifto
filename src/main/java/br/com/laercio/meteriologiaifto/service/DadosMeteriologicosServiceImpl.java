@@ -1,5 +1,7 @@
 package br.com.laercio.meteriologiaifto.service;
 
+
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,11 +12,13 @@ import br.com.laercio.meteriologiaifto.repository.DadosMeteriologicosRepository;
 
 @Service
 public class DadosMeteriologicosServiceImpl implements DadosMeteriologicosService {
+	
 	@Autowired
 	private DadosMeteriologicosRepository dadosMeteriologicosRepository;
-	
+
 	@Override
-	public List<DadosMeteriologicos> findAll(){
-		return this.dadosMeteriologicosRepository.findAll();
+	public List<DadosMeteriologicos> findAllByIdEstacao(long idEstacao) {
+		return dadosMeteriologicosRepository.findByIdEstacao(idEstacao);
 	}
+
 }
