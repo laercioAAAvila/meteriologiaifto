@@ -20,9 +20,4 @@ public class DadosMeteriologicosController {
 	public DadosMeteriologicos adicionar (@RequestBody DadosMeteriologicos dadosMeteriologicos) {
 		return dadosMeteriologicosRepository.save(dadosMeteriologicos);				
 	}
-	
-//	@RequestMapping(method = RequestMethod.GET, value = "/api/estacao/dados")
-//	public List<DadosMeteriologicos> mostrar() {
-//		return dadosMeteriologicosRepository.findAll();
-//	}
 }
