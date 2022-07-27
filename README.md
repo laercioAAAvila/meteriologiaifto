@@ -5,23 +5,23 @@
 Necessario ter banco de dados MySQL 
 precisar criar o banco de dados com nome meteriologiaifto
 
-Adicionar informação da estação via json na rota: localhost:8080/api/estacao
+Adicionar informação da estação via json na rota: localhost:8080/api/estacao<br/>
 
-Os dados são:
-nome
-descricao
-posicao_mapa
+Os dados são:<br/>
+nome<br/>
+descricao<br/>
+posicao_mapa<br/>
 
-Adicionar dados da estação via json na rota: localhost:8080/api/estacao/dados
-Os dados são:
-id_estacao
-temperatura
-umidade_ar
-velocidade_vento
-direcao_vento
-precipitacao_chuva
-radiacao_solar
-private String data;
+Adicionar dados da estação via json na rota: localhost:8080/api/estacao/dados<br/>
+Os dados são:<br/>
+id_estacao<br/>
+temperatura<br/>
+umidade_ar<br/>
+velocidade_vento<br/>
+direcao_vento<br/>
+precipitacao_chuva<br/>
+radiacao_solar<br/>
+private String data;<br/>
 
 
 
