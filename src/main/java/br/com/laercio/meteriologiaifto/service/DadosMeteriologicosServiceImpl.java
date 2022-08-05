@@ -17,4 +17,11 @@ public class DadosMeteriologicosServiceImpl implements DadosMeteriologicosServic
 	public List<DadosMeteriologicos> findAll(){
 		return this.dadosMeteriologicosRepository.findAll();
 	}
+
+	@Override
+	public List<DadosMeteriologicos> findAllById(long idEstacao) {
+		
+		return this.dadosMeteriologicosRepository.findAllById(idEstacao);
+	}
+	
 }

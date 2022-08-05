@@ -1,0 +1,36 @@
+<div class="card" th:fragment="card-estacao">
+  <div class="card-header">
+    <span th:text="${est.nome}"></span>
+  </div>
+  <div class="card-body">
+    <table class="table" style="font-size:12px">
+    <thead>
+		<tr>
+		    <th scope="col">ID DADOS</th>
+		    <th scope="col">TEMPERATURA</th>
+		    <th scope="col">UMIDADE DO AR</th>
+		    <th scope="col">VELOCIDADE DO VENTO</th>
+		    <th scope="col">DIREÇÃO DO VENTO</th>
+		    <th scope="col">PRECIPITAÇÃO</th>
+		    <th scope="col">RADIAÇÃO SOLAR</th>
+		    <th scope="col">DATA</th>
+		</tr>
+   </thead>
+   <tbody>
+	    <tr th:if="${dadosMeteriologicos.empty}">
+	    	<td colspan="2"> Não tem dados </td>
+	    </tr>
+	   	<tr th:each="dadosMeteriologico : ${dadosMeteriologicos}">
+	       <th scope="row" th:text="${dadosMeteriologico.id}"></th>
+	       <td th:text="${dadosMeteriologico.temperatura + 'Cº'}"> </td>
+	       <td th:text="${dadosMeteriologico.umidadeDoAr + '%'}"></td>
+	       <td th:text="${dadosMeteriologico.velocidadeDoVento + 'KM'}"></td>
+	       <td th:text="${dadosMeteriologico.direcaoDoVento}"></td>
+	       <td th:text="${dadosMeteriologico.precipitacaoDaChuva + '%'}"></td>
+	       <td th:text="${dadosMeteriologico.radicaoSolar + '%'}"></td>
+	       <td th:text="${dadosMeteriologico.data}"></td>
+	   	</tr>
+    </tbody>
+</table>
+  </div>
+</div>
