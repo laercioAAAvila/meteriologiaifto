@@ -33,8 +33,14 @@ public class PageWebController {
     }
 	@RequestMapping(method = RequestMethod.GET, value = "/estacao/{id}")
 	public String estacao(@PathVariable(value = "id") long idEstacao,Model model) {
-		Optional<EstacaoMeteriologica> estacaoMeteriologica = estacaoMetoriologicaService.findById(idEstacao);
-		model.addAttribute("estacaoMeteriologica", estacaoMeteriologica);
+		Optional<EstacaoMeteriologica> estacao = estacaoMetoriologicaService.findById(idEstacao);
+		EstacaoMeteriologica est = estacao.get();
+		List<DadosMeteriologicos> dadosMeteriologicos = dadosMeteriologicosService.findAllById(idEstacao);
+		List<EstacaoMeteriologica> estacaoMeteriologicas = estacaoMetoriologicaService.findAll();
+		
+		model.addAttribute("estacaoMeteriologicas", estacaoMeteriologicas);
+		model.addAttribute("dadosMeteriologicos", dadosMeteriologicos);
+		model.addAttribute("est", est);
 		return "base/estacao";
 	}
 }

@@ -1,6 +1,8 @@
-<ul class="navbar-nav text-light" id="accordionSidebar" th:if="${estacaoMeteriologicas.empty}">
-	<td colspan="2"> Não tem dados </td>
-</ul>
-<ul class="navbar-nav text-light" id="accordionSidebar" th:each="estacaoMeteriologica : ${estacaoMeteriologicas}">
-  <li class="nav-item"><a class="nav-link active" th:href='@{/estacao/{id}(id=${estacaoMeteriologica.id})}'><i class="fas fa-meteor"></i><span><strong th:text="${estacaoMeteriologica.nome}"></strong><br></span></a></li>
-</ul>
+<div th:fragment="nav-estacao">
+	<ul class="navbar-nav text-light" id="accordionSidebar" th:if="${estacaoMeteriologicas.empty}">
+		<td colspan="2"> Não tem dados </td>
+	</ul>
+	<ul class="navbar-nav text-light" id="accordionSidebar" th:each="estacaoMeteriologica : ${estacaoMeteriologicas}">
+	  <li class="nav-item"><a class="nav-link active" th:href='@{~/estacao/{id}(id=${estacaoMeteriologica.id})}'><i class="fas fa-meteor"></i><span><strong th:text="${estacaoMeteriologica.nome}"></strong><br></span></a></li>
+	</ul>
+</div>
