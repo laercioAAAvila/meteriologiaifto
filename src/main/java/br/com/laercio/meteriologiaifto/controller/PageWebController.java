@@ -31,6 +31,7 @@ public class PageWebController {
         model.addAttribute("estacaoMeteriologicas", estacaoMeteriologicas);
         return "index";
     }
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/estacao/{id}")
 	public String estacao(@PathVariable(value = "id") long idEstacao,Model model) {
 		Optional<EstacaoMeteriologica> estacao = estacaoMetoriologicaService.findById(idEstacao);
@@ -43,4 +44,6 @@ public class PageWebController {
 		model.addAttribute("est", est);
 		return "base/estacao";
 	}
+	
+	
 }

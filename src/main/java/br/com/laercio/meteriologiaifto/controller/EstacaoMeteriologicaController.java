@@ -20,8 +20,9 @@ public class EstacaoMeteriologicaController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/api/estacao")
 	@ResponseStatus(HttpStatus.CREATED)
-	public EstacaoMeteriologica adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
-		return estacaoMeteriologicaRepository.save(estacaoMeteriologica);
+	public long adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
+		estacaoMeteriologicaRepository.save(estacaoMeteriologica);
+		return estacaoMeteriologica.getId();
 	}
 	
 	

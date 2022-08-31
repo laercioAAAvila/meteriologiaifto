@@ -1,6 +1,10 @@
 <div class="card" th:fragment="card-estacao">
   <div class="card-header">
     <span th:text="${est.nome}"></span>
+    <button class="btn btn-secondary"><a style="text-decoration: none; color: black; font-weight: bold" th:href="${'/estacao/' + est.id}">TUDO</a></button>
+    <button class="btn btn-primary"><a style="text-decoration: none; color: black; font-weight: bold" th:href="${'/estacao/' + est.id}">1 DIA</a></button>
+    <button class="btn btn-success"><a style="text-decoration: none; color: black; font-weight: bold" th:href="${'/estacao/' + est.id}">1 SEMANA</a></button>
+    <button class="btn btn-info"><a style="text-decoration: none; color: black; font-weight: bold" th:href="${'/estacao/' + est.id}">1 MÊS</a></button>
   </div>
   <div class="card-body">
     <table class="table" style="font-size:12px">
