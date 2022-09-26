@@ -23,10 +23,10 @@
 	   	<tr th:each="dadosMeteriologico : ${dadosMeteriologicos}">
 	       <th scope="row" th:text="${dadosMeteriologico.id}"></th>
 	       <td th:text="${dadosMeteriologico.temperatura + 'Cº'}"> </td>
-	       <td th:text="${dadosMeteriologico.umidadeDoAr + '%'}"></td>
-	       <td th:text="${dadosMeteriologico.velocidadeDoVento + 'KM'}"></td>
-	       <td th:text="${dadosMeteriologico.direcaoDoVento}"></td>
-	       <td th:text="${dadosMeteriologico.precipitacaoDaChuva + '%'}"></td>
+	       <td th:text="${dadosMeteriologico.umidadeAr + '%'}"></td>
+	       <td th:text="${dadosMeteriologico.velocidadeVento + 'KM'}"></td>
+	       <td th:text="${dadosMeteriologico.direcaoVento}"></td>
+	       <td th:text="${dadosMeteriologico.precipitacaoChuva + '%'}"></td>
 	       <td th:text="${dadosMeteriologico.radicaoSolar + '%'}"></td>
 	       <td th:text="${dadosMeteriologico.data}"></td>
 	   	</tr>

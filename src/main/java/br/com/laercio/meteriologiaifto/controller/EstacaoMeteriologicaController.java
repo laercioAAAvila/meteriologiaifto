@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+
 import br.com.laercio.meteriologiaifto.model.EstacaoMeteriologica;
 import br.com.laercio.meteriologiaifto.repository.EstacaoMeteriologicaRepository;
 
@@ -20,8 +22,9 @@ public class EstacaoMeteriologicaController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/api/estacao")
 	@ResponseStatus(HttpStatus.CREATED)
-	public EstacaoMeteriologica adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
-		return estacaoMeteriologicaRepository.save(estacaoMeteriologica);
+	public long adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
+		estacaoMeteriologicaRepository.save(estacaoMeteriologica);
+		return estacaoMeteriologica.getId();
 	}
 	
 	
