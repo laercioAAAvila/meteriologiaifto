@@ -16,13 +16,13 @@ public class DadosMeteriologicos {
 	private Long idEstacao;
 	private double temperatura;
 	@Column(name = "umidade_ar")
-	private double umidadeDoAr;
+	private double umidadeAr;
 	@Column(name = "velocidade_vento")
-	private double velocidadeDoVento;
+	private double velocidadeVento;
 	@Column(name = "direcao_vento")
-	private String direcaoDoVento;
+	private String direcaoVento;
 	@Column(name = "precipitacao_chuva")
-	private double precipitacaoDaChuva;
+	private double precipitacaoChuva;
 	@Column(name = "radiacao_solar")
 	private double radicaoSolar;
 	private String data;
@@ -51,36 +51,36 @@ public class DadosMeteriologicos {
 		this.temperatura = temperatura;
 	}
 
-	public double getUmidadeDoAr() {
-		return umidadeDoAr;
+	public double getUmidadeAr() {
+		return umidadeAr;
 	}
 
-	public void setUmidadeDoAr(double umidadeDoAr) {
-		this.umidadeDoAr = umidadeDoAr;
+	public void setUmidadeAr(double umidadeAr) {
+		this.umidadeAr = umidadeAr;
 	}
 
-	public double getVelocidadeDoVento() {
-		return velocidadeDoVento;
+	public double getVelocidadeVento() {
+		return velocidadeVento;
 	}
 
-	public void setVelocidadeDoVento(double velocidadeDoVento) {
-		this.velocidadeDoVento = velocidadeDoVento;
+	public void setVelocidadeVento(double velocidadeVento) {
+		this.velocidadeVento = velocidadeVento;
 	}
 
-	public String getDirecaoDoVento() {
-		return direcaoDoVento;
+	public String getDirecaoVento() {
+		return direcaoVento;
 	}
 
-	public void setDirecaoDoVento(String direcaoDoVento) {
-		this.direcaoDoVento = direcaoDoVento;
+	public void setDirecaoVento(String direcaoVento) {
+		this.direcaoVento = direcaoVento;
 	}
 
-	public double getPrecipitacaoDaChuva() {
-		return precipitacaoDaChuva;
+	public double getPrecipitacaoChuva() {
+		return precipitacaoChuva;
 	}
 
-	public void setPrecipitacaoDaChuva(double precipitacaoDaChuva) {
-		this.precipitacaoDaChuva = precipitacaoDaChuva;
+	public void setPrecipitacaoChuva(double precipitacaoChuva) {
+		this.precipitacaoChuva = precipitacaoChuva;
 	}
 
 	public double getRadicaoSolar() {
