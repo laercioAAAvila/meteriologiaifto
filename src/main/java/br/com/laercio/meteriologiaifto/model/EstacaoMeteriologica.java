@@ -15,7 +15,7 @@ public class EstacaoMeteriologica {
 	private String nome;
 	private String descricao;
 	@Column(name = "posicao_mapa")
-	private String posicaoNoMapa;
+	private String posicaoMapa;
 
 	public Long getId() {
 		return id;
@@ -41,12 +41,12 @@ public class EstacaoMeteriologica {
 		this.descricao = descricao;
 	}
 
-	public String getPosicaoNoMapa() {
-		return posicaoNoMapa;
+	public String getPosicaoMapa() {
+		return posicaoMapa;
 	}
 
-	public void setPosicaoNoMapa(String posicaoNoMapa) {
-		this.posicaoNoMapa = posicaoNoMapa;
+	public void setPosicaoMapa(String posicaoMapa) {
+		this.posicaoMapa = posicaoMapa;
 	}
 
 }
