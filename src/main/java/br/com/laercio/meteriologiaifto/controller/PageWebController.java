@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.laercio.meteriologiaifto.model.DadosMeteriologicos;
 import br.com.laercio.meteriologiaifto.model.EstacaoMeteriologica;
 import br.com.laercio.meteriologiaifto.service.DadosMeteriologicosService;
-import br.com.laercio.meteriologiaifto.service.EstacaoMetoriologicaService;
+import br.com.laercio.meteriologiaifto.service.EstacaoMeteriologicaService;
 
 @Controller
 public class PageWebController {
@@ -21,7 +21,7 @@ public class PageWebController {
 	@Autowired
 	DadosMeteriologicosService dadosMeteriologicosService;
 	@Autowired
-	EstacaoMetoriologicaService estacaoMetoriologicaService;
+	EstacaoMeteriologicaService estacaoMetoriologicaService;
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/")
 	public String inicio(Model model) {
@@ -44,6 +44,5 @@ public class PageWebController {
 		model.addAttribute("est", est);
 		return "base/estacao";
 	}
-	
 	
 }

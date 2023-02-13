@@ -2,9 +2,24 @@ package br.com.laercio.meteriologiaifto.service;
 
 import java.util.List;
 
-import br.com.laercio.meteriologiaifto.model.DadosMeteriologicos;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public interface DadosMeteriologicosService {
-	public List<DadosMeteriologicos> findAll();
-	public List<DadosMeteriologicos> findAllById(long idEstacao);
+import br.com.laercio.meteriologiaifto.model.DadosMeteriologicos;
+import br.com.laercio.meteriologiaifto.repository.DadosMeteriologicosRepository;
+
+@Service
+public class DadosMeteriologicosService {
+	@Autowired
+	private DadosMeteriologicosRepository dadosMeteriologicosRepository;
+
+	public List<DadosMeteriologicos> findAll() {
+		return this.dadosMeteriologicosRepository.findAll();
+	}
+
+	public List<DadosMeteriologicos> findAllById(long idEstacao) {
+
+		return this.dadosMeteriologicosRepository.findAllById(idEstacao);
+	}
+
 }
