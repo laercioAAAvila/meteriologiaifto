@@ -22,4 +22,11 @@ public class EstacaoMeteriologicaService {
 	public List<EstacaoMeteriologica> findAll() {
 		return this.estacaoMeteriologicaRepository.findAll();
 	}
+
+	public long save(EstacaoMeteriologica estacaoMeteriologica) {
+		this.estacaoMeteriologicaRepository.save(estacaoMeteriologica);
+		return estacaoMeteriologica.getId();
+
+	}
+
 }

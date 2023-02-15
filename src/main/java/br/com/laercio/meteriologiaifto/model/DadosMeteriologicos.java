@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -18,8 +19,6 @@ public class DadosMeteriologicos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "id_estacao")
-	private Long idEstacao;
 	private double temperatura;
 	@Column(name = "umidade_do_ar")
 	private double umidadeAr;
@@ -32,8 +31,9 @@ public class DadosMeteriologicos {
 	@Column(name = "radiacao_do_solar")
 	private double radicaoSolar;
 	private LocalDate data;
-	
+
 	@ManyToOne
+	@JoinColumn(name = "estacao_id")
 	private EstacaoMeteriologica estacaoMeteriologica;
 
 	public Long getId() {
@@ -42,14 +42,6 @@ public class DadosMeteriologicos {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getIdEstacao() {
-		return idEstacao;
-	}
-
-	public void setIdEstacao(Long idEstacao) {
-		this.idEstacao = idEstacao;
 	}
 
 	public double getTemperatura() {
@@ -100,10 +92,6 @@ public class DadosMeteriologicos {
 		this.radicaoSolar = radicaoSolar;
 	}
 
-	public LocalDate getData() {
-		return data;
-	}
-	
 	public String getDataBr() {
 		DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d/MM/uuuu");
 		String br = this.data.format(formatters);
@@ -114,6 +102,10 @@ public class DadosMeteriologicos {
 		this.data = LocalDate.parse(data);
 	}
 
+	public long getEstacaoId() {
+		return this.estacaoMeteriologica.getId();
+	}
+
 	public EstacaoMeteriologica getEstacaoMeteriologica() {
 		return estacaoMeteriologica;
 	}
@@ -121,7 +113,5 @@ public class DadosMeteriologicos {
 	public void setEstacaoMeteriologica(EstacaoMeteriologica estacaoMeteriologica) {
 		this.estacaoMeteriologica = estacaoMeteriologica;
 	}
-	
-	
 
 }

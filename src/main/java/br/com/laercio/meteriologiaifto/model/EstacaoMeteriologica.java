@@ -24,7 +24,7 @@ public class EstacaoMeteriologica {
 	@Column(name = "posicao_no_mapa")
 	private String posicaoMapa;
 
-	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "estacaoMeteriologica", cascade = CascadeType.ALL)
 	private List<DadosMeteriologicos> dadosMeteriologicos = new ArrayList<DadosMeteriologicos>();
 
 	public Long getId() {
