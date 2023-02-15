@@ -1,6 +1,5 @@
 package br.com.laercio.meteriologiaifto.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,19 +9,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.laercio.meteriologiaifto.model.EstacaoMeteriologica;
-import br.com.laercio.meteriologiaifto.repository.EstacaoMeteriologicaRepository;
+import br.com.laercio.meteriologiaifto.service.EstacaoMeteriologicaService;
 
 @RestController
 public class EstacaoMeteriologicaController {
 
 	@Autowired
-	private EstacaoMeteriologicaRepository estacaoMeteriologicaRepository;
+	private EstacaoMeteriologicaService estacaoMeteriologicaService;
 
 	@RequestMapping(method = RequestMethod.POST, value = "/api/estacao")
 	@ResponseStatus(HttpStatus.CREATED)
-	public EstacaoMeteriologica adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
-		return estacaoMeteriologicaRepository.save(estacaoMeteriologica);
+	public long adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
+		this.estacaoMeteriologicaService.save(estacaoMeteriologica);
+		return estacaoMeteriologica.getId();
 	}
-	
-	
+
 }

@@ -1,36 +1,43 @@
 <div class="card" th:fragment="card-estacao">
-  <div class="card-header">
-    <span th:text="${est.nome}"></span>
-  </div>
-  <div class="card-body">
-    <table class="table" style="font-size:12px">
-    <thead>
-		<tr>
-		    <th scope="col">ID DADOS</th>
-		    <th scope="col">TEMPERATURA</th>
-		    <th scope="col">UMIDADE DO AR</th>
-		    <th scope="col">VELOCIDADE DO VENTO</th>
-		    <th scope="col">DIREÇÃO DO VENTO</th>
-		    <th scope="col">PRECIPITAÇÃO</th>
-		    <th scope="col">RADIAÇÃO SOLAR</th>
-		    <th scope="col">DATA</th>
-		</tr>
-   </thead>
-   <tbody>
-	    <tr th:if="${dadosMeteriologicos.empty}">
-	    	<td colspan="2"> Não tem dados </td>
-	    </tr>
-	   	<tr th:each="dadosMeteriologico : ${dadosMeteriologicos}">
-	       <th scope="row" th:text="${dadosMeteriologico.id}"></th>
-	       <td th:text="${dadosMeteriologico.temperatura + 'Cº'}"> </td>
-	       <td th:text="${dadosMeteriologico.umidadeDoAr + '%'}"></td>
-	       <td th:text="${dadosMeteriologico.velocidadeDoVento + 'KM'}"></td>
-	       <td th:text="${dadosMeteriologico.direcaoDoVento}"></td>
-	       <td th:text="${dadosMeteriologico.precipitacaoDaChuva + '%'}"></td>
-	       <td th:text="${dadosMeteriologico.radicaoSolar + '%'}"></td>
-	       <td th:text="${dadosMeteriologico.data}"></td>
-	   	</tr>
-    </tbody>
-</table>
-  </div>
+	<div class="card-header">
+		<span>Nome: <strong th:text="${est.nome}"></strong></span>
+
+	</div>
+
+	<div class="card-body">
+		<div class="card-header">
+			<ul class="navbar-nav" id="accordionSidebar">
+				<li class="nav-item"><span>Descrição: <strong
+						th:text="${est.descricao}"></strong><br></span></li>
+				<li class="nav-item"><span>Coordenadas: <strong
+						th:text="${est.posicaoMapa}"></strong><br></span></li>
+			</ul>
+		</div>
+		<div class="card-body">
+			<button class="btn btn-secondary">
+				<a style="text-decoration: none; color: black; font-weight: bold"
+					th:href="${'/estacao/' + est.id}">TUDO</a>
+			</button>
+			<button class="btn btn-primary">
+				<a style="text-decoration: none; color: black; font-weight: bold"
+					th:href="${'/estacao/' + est.id + '/hoje' }">HOJE</a>
+			</button>
+			<button class="btn btn-success">
+				<a style="text-decoration: none; color: black; font-weight: bold"
+					th:href="${'/estacao/' + est.id +'/sete'}">Há 7 dias</a>
+			</button>
+			<button class="btn btn-info">
+				<a style="text-decoration: none; color: black; font-weight: bold"
+					th:href="${'/estacao/' + est.id +'/trinta'}">Há 30 dias</a>
+			</button>
+			
+			<button class="btn btn-info">
+				<a style="text-decoration: none; color: black; font-weight: bold"
+					href="#">Graficos</a>
+			</button>
+		</div>
+		
+		<table th:replace="fragments/detalhes-tabela :: tabela"></table>
+		<div th:replace="fragments/detalhes-tabela :: nav-table"></div>
+	</div>
 </div>

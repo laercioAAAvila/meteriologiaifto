@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
-<head th:insert="fragments/base :: head(Início)"/>
+<head th:insert="fragments/head :: head(Início)"/>
 
 <body id="page-top">
     <div id="wrapper">
@@ -15,19 +15,20 @@
                 <hr class="sidebar-divider my-0">
 				<ul th:replace="fragments/nav-estacao :: nav-estacao"></ul>
                 <div class="text-center d-none d-md-inline">
-                	<button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
-               	</div>
+					<button class="btn rounded-circle border-0" id="sidebarToggle"
+						type="button"></button>
+				</div>
             </div>
         </nav>
         
         <div class="d-flex flex-column" id="content-wrapper">
-        	
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button></div>
                 </nav>
-                
-               	<div th:replace="fragments/tabela :: tabela"></div>
+                <span class="m-3">TODAS ESTAÇÕES</span>
+               	<div th:replace="~{fragments/tabela :: tabela}"></div>
+               	<div th:replace="~{fragments/tabela :: nav-table}"></div>
             </div>
             
             

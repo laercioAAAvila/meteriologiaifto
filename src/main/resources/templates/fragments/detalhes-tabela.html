@@ -2,28 +2,28 @@
 	<thead>
 		<tr>
 			<th><a
-				th:href="@{'/' + ${currentPage} + '?sortField=id&amp;sortDir=' + ${reverseSortDir}}">ID
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage} + '?sortField=id&amp;sortDir=' + ${reverseSortDir}}">ID
 					DADOS</a></th>
 			<th><a
-				th:href="@{'/' + ${currentPage} + '?sortField=estacaoMeteriologica.nome&amp;sortDir=' + ${reverseSortDir}}">ESTAÇÃO</a></th>
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage} + '?sortField=estacaoMeteriologica.nome&amp;sortDir=' + ${reverseSortDir}}">ESTAÇÃO</a></th>
 			<th><a
-				th:href="@{'/' + ${currentPage} + '?sortField=temperatura&amp;sortDir=' + ${reverseSortDir}}">TEMPERATURA</a></th>
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage} + '?sortField=temperatura&amp;sortDir=' + ${reverseSortDir}}">TEMPERATURA</a></th>
 			<th><a
-				th:href="@{'/' + ${currentPage} + '?sortField=umidadeAr&amp;sortDir=' + ${reverseSortDir}}">UMIDADE
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage} + '?sortField=umidadeAr&amp;sortDir=' + ${reverseSortDir}}">UMIDADE
 					DO AR</a></th>
 			<th><a
-				th:href="@{'/' + ${currentPage} + '?sortField=velocidadeVento&amp;sortDir=' + ${reverseSortDir}}">VELOCIDADE
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage} + '?sortField=velocidadeVento&amp;sortDir=' + ${reverseSortDir}}">VELOCIDADE
 					DO VENTO</a></th>
 			<th><a
-				th:href="@{'/' + ${currentPage} + '?sortField=direcaoVento&amp;sortDir=' + ${reverseSortDir}}">DIREÇÃO
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage} + '?sortField=direcaoVento&amp;sortDir=' + ${reverseSortDir}}">DIREÇÃO
 					DO VENTO</a></th>
 			<th><a
-				th:href="@{'/' + ${currentPage} + '?sortField=precipitacaoChuva&amp;sortDir=' + ${reverseSortDir}}">PRECIPITAÇÃO</a></th>
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage} + '?sortField=precipitacaoChuva&amp;sortDir=' + ${reverseSortDir}}">PRECIPITAÇÃO</a></th>
 			<th><a
-				th:href="@{'/' + ${currentPage} + '?sortField=radicaoSolar&amp;sortDir=' + ${reverseSortDir}}">RADIAÇÃO
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage} + '?sortField=radicaoSolar&amp;sortDir=' + ${reverseSortDir}}">RADIAÇÃO
 					SOLAR</a></th>
 			<th><a
-				th:href="@{'/' + ${currentPage} + '?sortField=data&amp;sortDir=' + ${reverseSortDir}}">DATA</a></th>
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage} + '?sortField=data&amp;sortDir=' + ${reverseSortDir}}">DATA</a></th>
 
 		</tr>
 	</thead>
@@ -52,25 +52,25 @@
 			<li class="page-item"
 				th:each="i: ${#numbers.sequence(1, totalPages)}"><a
 				class="page-link p-1" th:if="${currentPage != i}"
-				th:href="@{'/' + ${i}+ '?sortField=' + ${sortField} + '&amp;sortDir=' + ${sortDir}}">[[${i}]]</a>
+				th:href="@{'/estacao/' +${id}+ '/' + ${i}+ '?sortField=' + ${sortField} + '&amp;sortDir=' + ${sortDir}}">[[${i}]]</a>
 
 				<a class=""
 				th:classappend="${currentPage != i} ?  'page-link p-1': 'page-link alert-dark p-1'"
 				th:unless="${currentPage != i}">[[${i}]]</a> &nbsp;&nbsp; </a></li>
 			<li class="page-item" id="div-pagened-voltar"
 				th:if="${currentPage >= 2}"><a class="page-link p-1"
-				th:href="@{'/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&amp;sortDir=' + ${sortDir}}">Voltar</a>
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage - 1} + '?sortField=' + ${sortField} + '&amp;sortDir=' + ${sortDir}}">Voltar</a>
 			</li>
 			<li th:if="${currentPage < totalPages || currentPage != totalPages}"
 				class="page-item"><a class="page-link p-1"
 				th:if="${currentPage < totalPages}"
-				th:href="@{'/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&amp;sortDir=' + ${sortDir}}">Próxima</a>
+				th:href="@{'/estacao/' +${id}+ '/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&amp;sortDir=' + ${sortDir}}">Próxima</a>
 			</li>
 
 			<li class="page-item"
 				th:if="${currentPage < totalPages || currentPage != totalPages}">
 				<a class="page-link p-1" th:if="${currentPage < totalPages}"
-				th:href="@{'/' + ${totalPages}+ '?sortField=' + ${sortField} + '&amp;sortDir=' + ${sortDir}}">
+				th:href="@{'/estacao/' +${id}+ '/' + ${totalPages}+ '?sortField=' + ${sortField} + '&amp;sortDir=' + ${sortDir}}">
 					Última</a>
 			</li>
 		</ul>

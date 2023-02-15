@@ -1,31 +1,43 @@
 package br.com.laercio.meteriologiaifto.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-@Entity(name = "dados_meteriologicos")
+@Entity
+@Table(name = "dados_meteriologicos")
 public class DadosMeteriologicos {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "id_estacao")
-	private Long idEstacao;
 	private double temperatura;
-	@Column(name = "umidade_ar")
-	private double umidadeDoAr;
-	@Column(name = "velocidade_vento")
-	private double velocidadeDoVento;
-	@Column(name = "direcao_vento")
-	private String direcaoDoVento;
-	@Column(name = "precipitacao_chuva")
-	private double precipitacaoDaChuva;
-	@Column(name = "radiacao_solar")
+	@Column(name = "umidade_do_ar")
+	private double umidadeAr;
+	@Column(name = "velocidade_do_vento")
+	private double velocidadeVento;
+	@Column(name = "direcao_do_vento")
+	private String direcaoVento;
+	@Column(name = "precipitacao_da_chuva")
+	private double precipitacaoChuva;
+	@Column(name = "radiacao_do_solar")
 	private double radicaoSolar;
-	private String data;
+	private LocalDate data;
+	@Column(name = "data_de_criacao")
+	private LocalDateTime dataCriacao = LocalDateTime.now();
+	
+	@ManyToOne
+	@JoinColumn(name = "estacao_id")
+	private EstacaoMeteriologica estacaoMeteriologica;
 
 	public Long getId() {
 		return id;
@@ -33,14 +45,6 @@ public class DadosMeteriologicos {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getIdEstacao() {
-		return idEstacao;
-	}
-
-	public void setIdEstacao(Long idEstacao) {
-		this.idEstacao = idEstacao;
 	}
 
 	public double getTemperatura() {
@@ -51,36 +55,36 @@ public class DadosMeteriologicos {
 		this.temperatura = temperatura;
 	}
 
-	public double getUmidadeDoAr() {
-		return umidadeDoAr;
+	public double getUmidadeAr() {
+		return umidadeAr;
 	}
 
-	public void setUmidadeDoAr(double umidadeDoAr) {
-		this.umidadeDoAr = umidadeDoAr;
+	public void setUmidadeAr(double umidadeAr) {
+		this.umidadeAr = umidadeAr;
 	}
 
-	public double getVelocidadeDoVento() {
-		return velocidadeDoVento;
+	public double getVelocidadeVento() {
+		return velocidadeVento;
 	}
 
-	public void setVelocidadeDoVento(double velocidadeDoVento) {
-		this.velocidadeDoVento = velocidadeDoVento;
+	public void setVelocidadeVento(double velocidadeVento) {
+		this.velocidadeVento = velocidadeVento;
 	}
 
-	public String getDirecaoDoVento() {
-		return direcaoDoVento;
+	public String getDirecaoVento() {
+		return direcaoVento;
 	}
 
-	public void setDirecaoDoVento(String direcaoDoVento) {
-		this.direcaoDoVento = direcaoDoVento;
+	public void setDirecaoVento(String direcaoVento) {
+		this.direcaoVento = direcaoVento;
 	}
 
-	public double getPrecipitacaoDaChuva() {
-		return precipitacaoDaChuva;
+	public double getPrecipitacaoChuva() {
+		return precipitacaoChuva;
 	}
 
-	public void setPrecipitacaoDaChuva(double precipitacaoDaChuva) {
-		this.precipitacaoDaChuva = precipitacaoDaChuva;
+	public void setPrecipitacaoChuva(double precipitacaoChuva) {
+		this.precipitacaoChuva = precipitacaoChuva;
 	}
 
 	public double getRadicaoSolar() {
@@ -91,12 +95,26 @@ public class DadosMeteriologicos {
 		this.radicaoSolar = radicaoSolar;
 	}
 
-	public String getData() {
-		return data;
+	public String getDataBr() {
+		DateTimeFormatter formatters = DateTimeFormatter.ofPattern("d/MM/uuuu");
+		String br = this.data.format(formatters);
+		return br;
 	}
 
 	public void setData(String data) {
-		this.data = data;
+		this.data = LocalDate.parse(data);
+	}
+
+	public long getEstacaoId() {
+		return this.estacaoMeteriologica.getId();
+	}
+
+	public EstacaoMeteriologica getEstacaoMeteriologica() {
+		return estacaoMeteriologica;
+	}
+
+	public void setEstacaoMeteriologica(EstacaoMeteriologica estacaoMeteriologica) {
+		this.estacaoMeteriologica = estacaoMeteriologica;
 	}
 
 }
