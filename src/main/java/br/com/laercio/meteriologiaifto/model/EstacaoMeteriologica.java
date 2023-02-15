@@ -1,5 +1,6 @@
 package br.com.laercio.meteriologiaifto.model;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +21,13 @@ public class EstacaoMeteriologica {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
+	//como não vai poder alterar nome da estação pelo sistema, usa-se esse campo caso nescessario
+	private String apelido;
 	private String descricao;
 	@Column(name = "posicao_no_mapa")
 	private String posicaoMapa;
+	@Column(name = "data_de_criacao")
+	private LocalDateTime dataCriacao = LocalDateTime.now();
 
 	@OneToMany(mappedBy = "estacaoMeteriologica", cascade = CascadeType.ALL)
 	private List<DadosMeteriologicos> dadosMeteriologicos = new ArrayList<DadosMeteriologicos>();
@@ -53,6 +58,18 @@ public class EstacaoMeteriologica {
 
 	public String getPosicaoMapa() {
 		return posicaoMapa;
+	}
+
+	public String getApelido() {
+		return apelido;
+	}
+
+	public void setApelido(String apelido) {
+		this.apelido = apelido;
+	}
+
+	public LocalDateTime getDataCriacao() {
+		return dataCriacao;
 	}
 
 	public void setPosicaoMapa(String posicaoMapa) {

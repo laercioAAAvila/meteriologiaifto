@@ -1,6 +1,7 @@
 package br.com.laercio.meteriologiaifto.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Column;
@@ -31,7 +32,9 @@ public class DadosMeteriologicos {
 	@Column(name = "radiacao_do_solar")
 	private double radicaoSolar;
 	private LocalDate data;
-
+	@Column(name = "data_de_criacao")
+	private LocalDateTime dataCriacao = LocalDateTime.now();
+	
 	@ManyToOne
 	@JoinColumn(name = "estacao_id")
 	private EstacaoMeteriologica estacaoMeteriologica;
