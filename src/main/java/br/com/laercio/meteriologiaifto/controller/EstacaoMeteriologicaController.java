@@ -1,5 +1,8 @@
 package br.com.laercio.meteriologiaifto.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,9 +22,12 @@ public class EstacaoMeteriologicaController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/api/estacao")
 	@ResponseStatus(HttpStatus.CREATED)
-	public long adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
+	public Map<String, String> adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
 		this.estacaoMeteriologicaService.save(estacaoMeteriologica);
-		return estacaoMeteriologica.getId();
+		
+		HashMap<String, String> map = new HashMap<>();
+	    map.put("id", String.valueOf(estacaoMeteriologica.getId()));
+		return map;
 	}
 
 }

@@ -14,7 +14,7 @@ public interface DadosMeteriologicosRepository extends JpaRepository<DadosMeteri
 	@Query(value = "SELECT * FROM DADOS_METERIOLOGICOS WHERE estacao_id = ?1", nativeQuery = true)
 	Page<DadosMeteriologicos> findAllByEstacaoId(long id, Pageable pageable);
 	
-	@Query(value = "SELECT * FROM DADOS_METERIOLOGICOS WHERE (estacao_id = ?1) AND (data between adddate(now(),-1) and now())", nativeQuery = true)
+	@Query(value = "SELECT * FROM DADOS_METERIOLOGICOS WHERE (estacao_id = ?1) AND data = CURDATE()", nativeQuery = true)
 	Page<DadosMeteriologicos> findPaginatedByIdHoje(long id, Pageable pageable);
 	
 	@Query(value = "SELECT * FROM DADOS_METERIOLOGICOS WHERE (estacao_id = ?1) AND (data between adddate(now(),-7) and now())", nativeQuery = true)
