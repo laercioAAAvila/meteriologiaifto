@@ -10,73 +10,73 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import br.com.laercio.meteriologiaifto.model.DadosMeteriologicos;
-import br.com.laercio.meteriologiaifto.repository.DadosMeteriologicosRepository;
+import br.com.laercio.meteriologiaifto.model.DadosMeteorologicos;
+import br.com.laercio.meteriologiaifto.repository.DadosMeteorologicosRepository;
 
 @Service
-public class DadosMeteriologicosService {
+public class DadosMeteorologicosService {
 	@Autowired
-	private DadosMeteriologicosRepository dadosMeteriologicosRepository;
+	private DadosMeteorologicosRepository DadosMeteorologicosRepository;
 
-	public List<DadosMeteriologicos> findAll() {
-		return this.dadosMeteriologicosRepository.findAll();
+	public List<DadosMeteorologicos> findAll() {
+		return this.DadosMeteorologicosRepository.findAll();
 	}
 
-	public void save(DadosMeteriologicos dadosMeteriologicos) {
-		this.dadosMeteriologicosRepository.save(dadosMeteriologicos);
+	public void save(DadosMeteorologicos DadosMeteorologicos) {
+		this.DadosMeteorologicosRepository.save(DadosMeteorologicos);
 	}
 
-	public Page<DadosMeteriologicos> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
+	public Page<DadosMeteorologicos> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
 		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending()
 				: Sort.by(sortField).descending();
 
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
-		return this.dadosMeteriologicosRepository.findAll(pageable);
+		return this.DadosMeteorologicosRepository.findAll(pageable);
 	}
 
-	public Optional<DadosMeteriologicos> findByEstacaoId(Long id) {
-		return this.dadosMeteriologicosRepository.findById(id);
+	public Optional<DadosMeteorologicos> findByEstacaoId(Long id) {
+		return this.DadosMeteorologicosRepository.findById(id);
 
 	}
 
 	// ======================================//
-	public Page<DadosMeteriologicos> findPaginatedById(int pageNo, int pageSize, String sortField, String sortDirection,
+	public Page<DadosMeteorologicos> findPaginatedById(int pageNo, int pageSize, String sortField, String sortDirection,
 			long estacaoId) {
 		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending()
 				: Sort.by(sortField).descending();
 
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
-		return this.dadosMeteriologicosRepository.findAllByEstacaoId(estacaoId, pageable);
+		return this.DadosMeteorologicosRepository.findAllByEstacaoId(estacaoId, pageable);
 	}
 
 	// ======================================//
-	public Page<DadosMeteriologicos> findPaginatedByIdHoje(int pageNo, int pageSize, String sortField,
+	public Page<DadosMeteorologicos> findPaginatedByIdHoje(int pageNo, int pageSize, String sortField,
 			String sortDirection, long estacaoId) {
 		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending()
 				: Sort.by(sortField).descending();
 
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
-		return this.dadosMeteriologicosRepository.findPaginatedByIdHoje(estacaoId, pageable);
+		return this.DadosMeteorologicosRepository.findPaginatedByIdHoje(estacaoId, pageable);
 	}
 
 	// ======================================//
-	public Page<DadosMeteriologicos> findPaginatedByIdSete(int pageNo, int pageSize, String sortField,
+	public Page<DadosMeteorologicos> findPaginatedByIdSete(int pageNo, int pageSize, String sortField,
 			String sortDirection, long estacaoId) {
 		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending()
 				: Sort.by(sortField).descending();
 
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
-		return this.dadosMeteriologicosRepository.findPaginatedByIdSete(estacaoId, pageable);
+		return this.DadosMeteorologicosRepository.findPaginatedByIdSete(estacaoId, pageable);
 	}
 
 	// ======================================//
-	public Page<DadosMeteriologicos> findPaginatedByIdTrinta(int pageNo, int pageSize, String sortField,
+	public Page<DadosMeteorologicos> findPaginatedByIdTrinta(int pageNo, int pageSize, String sortField,
 			String sortDirection, long estacaoId) {
 		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending()
 				: Sort.by(sortField).descending();
 
 		Pageable pageable = PageRequest.of(pageNo - 1, pageSize, sort);
-		return this.dadosMeteriologicosRepository.findPaginatedByIdTrinta(estacaoId, pageable);
+		return this.DadosMeteorologicosRepository.findPaginatedByIdTrinta(estacaoId, pageable);
 	}
 
 }

@@ -28,11 +28,11 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:if="${dadosMeteriologicos.empty}">
+		<tr th:if="${DadosMeteorologicos.empty}">
 			<td colspan="2">Não tem dados</td>
 		</tr>
 
-		<tr th:each="dadosMeteriologico : ${dadosMeteriologicos}">
+		<tr th:each="dadosMeteriologico : ${DadosMeteorologicos}">
 			<th scope="row" th:text="${dadosMeteriologico.id}"></th>
 			<td th:text="${dadosMeteriologico.estacaoMeteriologica.nome}"></td>
 			<td th:text="${dadosMeteriologico.temperatura + 'Cº'}"></td>

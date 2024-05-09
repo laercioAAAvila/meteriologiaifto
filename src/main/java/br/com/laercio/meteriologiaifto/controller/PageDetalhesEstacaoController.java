@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import br.com.laercio.meteriologiaifto.model.DadosMeteriologicos;
+import br.com.laercio.meteriologiaifto.model.DadosMeteorologicos;
 import br.com.laercio.meteriologiaifto.model.EstacaoMeteriologica;
-import br.com.laercio.meteriologiaifto.service.DadosMeteriologicosService;
+import br.com.laercio.meteriologiaifto.service.DadosMeteorologicosService;
 import br.com.laercio.meteriologiaifto.service.EstacaoMeteriologicaService;
 
 @Controller
 public class PageDetalhesEstacaoController {
 
 	@Autowired
-	DadosMeteriologicosService dadosMeteriologicosService;
+	DadosMeteorologicosService DadosMeteorologicosService;
 	@Autowired
 	EstacaoMeteriologicaService estacaoMetoriologicaService;
 
@@ -36,8 +36,8 @@ public class PageDetalhesEstacaoController {
 			@PathVariable("id") int estacaoId) {
 		int pageSize = 5;
 
-		Page<DadosMeteriologicos> page = dadosMeteriologicosService.findPaginatedById(pageNo, pageSize, sortField, sortDir, estacaoId);
-		List<DadosMeteriologicos> dadosMeteriologicos = page.getContent();
+		Page<DadosMeteorologicos> page = DadosMeteorologicosService.findPaginatedById(pageNo, pageSize, sortField, sortDir, estacaoId);
+		List<DadosMeteorologicos> DadosMeteorologicos = page.getContent();
 
 		model.addAttribute("currentPage", pageNo);
 		model.addAttribute("totalPages", page.getTotalPages());
@@ -51,7 +51,7 @@ public class PageDetalhesEstacaoController {
 		Optional<EstacaoMeteriologica> est = this.estacaoMetoriologicaService.findById(estacaoId);
 		model.addAttribute("est", est.get());
 		model.addAttribute("estacaoMeteriologicas", estacaoMeteriologicas);
-		model.addAttribute("dadosMeteriologicos", dadosMeteriologicos);
+		model.addAttribute("DadosMeteorologicos", DadosMeteorologicos);
 
 		return "page/estacao";
 	}

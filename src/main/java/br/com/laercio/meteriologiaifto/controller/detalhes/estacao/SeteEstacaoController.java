@@ -7,52 +7,60 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import br.com.laercio.meteriologiaifto.model.DadosMeteriologicos;
+import br.com.laercio.meteriologiaifto.model.DadosMeteorologicos;
 import br.com.laercio.meteriologiaifto.model.EstacaoMeteriologica;
-import br.com.laercio.meteriologiaifto.service.DadosMeteriologicosService;
+import br.com.laercio.meteriologiaifto.service.DadosMeteorologicosService;
 import br.com.laercio.meteriologiaifto.service.EstacaoMeteriologicaService;
 
 @Controller
+@RequestMapping("/estacao")
 public class SeteEstacaoController {
 
-	@Autowired
-	DadosMeteriologicosService dadosMeteriologicosService;
-	@Autowired
-	EstacaoMeteriologicaService estacaoMetoriologicaService;
+	private final DadosMeteorologicosService dadosMeteorologicosService;
+	private final EstacaoMeteriologicaService estacaoMeteorologicaService;
 
-	@RequestMapping(method = RequestMethod.GET, value = "/estacao/{id}/sete")
-	public String sete(Model model, @PathVariable("id") int estacaoId) {
-		return findPaginatedBySete(1, "temperatura", "asc", model, estacaoId);
+	@Autowired
+	public SeteEstacaoController(DadosMeteorologicosService dadosMeteorologicosService, EstacaoMeteriologicaService estacaoMeteorologicaService) {
+		this.dadosMeteorologicosService = dadosMeteorologicosService;
+		this.estacaoMeteorologicaService = estacaoMeteorologicaService;
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/estacao/{id}/sete/{pageNo}")
-	public String findPaginatedBySete(@PathVariable(value = "pageNo") int pageNo,
-			@RequestParam("sortField") String sortField, @RequestParam("sortDir") String sortDir, Model model,
-			@PathVariable("id") int estacaoId) {
+	@GetMapping("/{id}/sete")
+	public String getDadosMeteorologicosSete(@PathVariable("id") int estacaoId, Model model) {
+		return findPaginatedBySete(1, "temperatura", "asc", estacaoId, model);
+	}
+
+	@GetMapping("/{id}/sete/{pageNo}")
+	public String findPaginatedBySete(@PathVariable("pageNo") int pageNo,
+									  @RequestParam("sortField") String sortField,
+									  @RequestParam("sortDir") String sortDir,
+									  @PathVariable("id") int estacaoId,
+									  Model model) {
 		int pageSize = 5;
 
-		Page<DadosMeteriologicos> page = dadosMeteriologicosService.findPaginatedByIdSete(pageNo, pageSize, sortField, sortDir, estacaoId);
-		List<DadosMeteriologicos> dadosMeteriologicos = page.getContent();
+		Page<DadosMeteorologicos> page = dadosMeteorologicosService.findPaginatedByIdSete(pageNo, pageSize, sortField, sortDir, estacaoId);
+		List<DadosMeteorologicos> dadosMeteorologicosList = page.getContent();
 
-		model.addAttribute("currentPage", pageNo);
+		populateModelWithPaginationAttributes(page, pageNo, sortField, sortDir, model);
+
+		List<EstacaoMeteriologica> estacoesMeteorologicas = estacaoMeteorologicaService.findAll();
+		Optional<EstacaoMeteriologica> estacaoOptional = estacaoMeteorologicaService.findById(estacaoId);
+
+		estacaoOptional.ifPresent(estacao -> model.addAttribute("est", estacao));
+		model.addAttribute("estacaoMeteriologicas", estacoesMeteorologicas);
+		model.addAttribute("dadosMeteorologicos", dadosMeteorologicosList);
+
+		return "page/estacao";
+	}
+
+	private void populateModelWithPaginationAttributes(Page<?> page, int currentPage, String sortField, String sortDir, Model model) {
+		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("totalItems", page.getTotalElements());
-
 		model.addAttribute("sortField", sortField);
 		model.addAttribute("sortDir", sortDir);
 		model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-
-		List<EstacaoMeteriologica> estacaoMeteriologicas = estacaoMetoriologicaService.findAll();
-		Optional<EstacaoMeteriologica> est = this.estacaoMetoriologicaService.findById(estacaoId);
-		model.addAttribute("est", est.get());
-		model.addAttribute("estacaoMeteriologicas", estacaoMeteriologicas);
-		model.addAttribute("dadosMeteriologicos", dadosMeteriologicos);
-
-		return "page/estacao";
 	}
 }

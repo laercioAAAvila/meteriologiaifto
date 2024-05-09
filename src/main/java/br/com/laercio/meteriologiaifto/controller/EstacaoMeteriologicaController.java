@@ -17,17 +17,16 @@ import br.com.laercio.meteriologiaifto.service.EstacaoMeteriologicaService;
 @RestController
 public class EstacaoMeteriologicaController {
 
-	@Autowired
-	private EstacaoMeteriologicaService estacaoMeteriologicaService;
+    @Autowired
+    private EstacaoMeteriologicaService estacaoMeteriologicaService;
 
-	@RequestMapping(method = RequestMethod.POST, value = "/api/estacao")
-	@ResponseStatus(HttpStatus.CREATED)
-	public Map<String, String> adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
-		this.estacaoMeteriologicaService.save(estacaoMeteriologica);
-		
-		HashMap<String, String> map = new HashMap<>();
-	    map.put("id", String.valueOf(estacaoMeteriologica.getId()));
-		return map;
-	}
+    @RequestMapping(method = RequestMethod.POST, value = "/api/estacao")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Map<String, String> adicionar(@RequestBody EstacaoMeteriologica estacaoMeteriologica) {
+        this.estacaoMeteriologicaService.save(estacaoMeteriologica);
 
+        HashMap<String, String> map = new HashMap<>();
+        map.put("id", String.valueOf(estacaoMeteriologica.getId()));
+        return map;
+    }
 }

@@ -30,7 +30,7 @@ public class EstacaoMeteriologica {
 	private LocalDateTime dataCriacao = LocalDateTime.now();
 
 	@OneToMany(mappedBy = "estacaoMeteriologica", cascade = CascadeType.ALL)
-	private List<DadosMeteriologicos> dadosMeteriologicos = new ArrayList<DadosMeteriologicos>();
+	private List<DadosMeteorologicos> DadosMeteorologicos = new ArrayList<DadosMeteorologicos>();
 
 	public Long getId() {
 		return id;
@@ -76,13 +76,13 @@ public class EstacaoMeteriologica {
 		this.posicaoMapa = posicaoMapa;
 	}
 
-	public List<DadosMeteriologicos> getDadosMeteriologicos() {
-		return dadosMeteriologicos;
+	public List<DadosMeteorologicos> getDadosMeteorologicos() {
+		return DadosMeteorologicos;
 	}
 
-	public void addDadosMeteriologicos(DadosMeteriologicos dadosMeteriologicos) {
-		dadosMeteriologicos.setEstacaoMeteriologica(this);
-		this.dadosMeteriologicos.add(dadosMeteriologicos);
+	public void addDadosMeteorologicos(DadosMeteorologicos DadosMeteorologicos) {
+		DadosMeteorologicos.setEstacaoMeteriologica(this);
+		this.DadosMeteorologicos.add(DadosMeteorologicos);
 	}
 
 }

@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "dados_meteriologicos")
-public class DadosMeteriologicos {
+public class DadosMeteorologicos {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

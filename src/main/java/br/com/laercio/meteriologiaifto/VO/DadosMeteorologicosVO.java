@@ -1,6 +1,6 @@
 package br.com.laercio.meteriologiaifto.VO;
 
-public class DadosMeteriologicosVO {
+public class DadosMeteorologicosVO {
 	
 	
 	private double temperatura;
